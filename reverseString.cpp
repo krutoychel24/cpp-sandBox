@@ -1,5 +1,7 @@
 #include <vector>
 #include <iostream>
+#define GREEN "\033[32m"
+#define BLUE "\033[34m"
 
 using namespace std;
 
@@ -9,15 +11,15 @@ public:
     void reverseString(vector<char> &s)
     {
 
-        int Left = 0;
-        int Right = s.size() - 1;
+        int left = 0;
+        int right = s.size() - 1;
 
-        while (Left < Right)
+        while (left < right)
         {
-            swap(s[Left], s[Right]);
+            swap(s[left], s[right]);
 
-            Left++;
-            Right--;
+            left++;
+            right--;
         }
         int i = 0;
         // while (i < sSize)
@@ -38,7 +40,7 @@ int main()
 
     for (char &c : input)
     {
-        cout << c;
+        cout << BLUE << c;
     }
 
     return 0;
