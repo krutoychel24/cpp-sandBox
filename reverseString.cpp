@@ -22,11 +22,6 @@ public:
             right--;
         }
         int i = 0;
-        // while (i < sSize)
-        //{
-        //   cout << i;
-        //  i++;
-        //}
     }
 };
 
