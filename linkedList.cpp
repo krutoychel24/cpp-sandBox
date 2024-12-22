@@ -81,7 +81,7 @@ public:
         }
     }
 
-    int GetN(int n)
+    int get(int n)
     {
         if (n < 0 || n >= size)
         {
@@ -102,6 +102,33 @@ public:
         }
 
         return NULL;
+    }
+
+    int headElement()
+    {
+        if (head != nullptr)
+        {
+            return head -> value;
+        }else 
+        {
+            return NULL;
+        }
+    }
+
+    int tailElement()
+    {
+        Node* current = head;
+
+            if (current == nullptr)
+            {
+                return NULL;
+            }
+
+        while (current -> next != nullptr)
+        {
+            current = current -> next;
+        }
+        return current -> value;
     }
 
 private:
