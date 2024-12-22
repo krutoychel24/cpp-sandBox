@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef LINKED_LIST
+#define LINKED_LIST
+
 #include <iostream>
 
 struct Node
@@ -36,6 +41,12 @@ public:
         }
     }
 
+    void removeLast()
+    {
+        int lastElementIndex = size - 1;
+        remove(lastElementIndex);
+    }
+
     void remove(int idx)
     {
         if (idx > this->size - 1 || idx < 0)
@@ -46,6 +57,7 @@ public:
         {
             this->head = current->next;
             delete current;
+            size--;
             return;
         }
 
@@ -58,6 +70,7 @@ public:
             {
                 prev->next = current->next;
                 delete current;
+                size--;
                 return;
             }
 
@@ -85,7 +98,7 @@ public:
     {
         if (n < 0 || n >= size)
         {
-            return NULL;
+            return 0;
         }
 
         Node *current = head;
@@ -101,15 +114,16 @@ public:
             i++;
         }
 
-        return NULL;
+        return 0;
     }
 
     int headElement()
     {
         if (head != nullptr)
         {
-            return head -> value;
-        }else 
+            return head->value;
+        }
+        else
         {
             return NULL;
         }
@@ -117,35 +131,25 @@ public:
 
     int tailElement()
     {
-        Node* current = head;
+        Node *current = head;
 
-            if (current == nullptr)
-            {
-                return NULL;
-            }
-
-        while (current -> next != nullptr)
+        if (current == nullptr)
         {
-            current = current -> next;
+            return NULL;
         }
-        return current -> value;
+
+        while (current->next != nullptr)
+        {
+            current = current->next;
+        }
+        return current->value;
     }
 
+    int getSize() {
+        return size;
+    }
 private:
     Node *head = nullptr;
     int size;
 };
-
-int main()
-{
-    LinkedList linkedList;
-
-    linkedList.insert(10);
-    linkedList.insert(20);
-    linkedList.insert(30);
-
-    linkedList.remove(1);
-    linkedList.printList();
-
-    return 0;
-}
+#endif
