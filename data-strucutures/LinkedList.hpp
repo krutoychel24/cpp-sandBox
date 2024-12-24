@@ -56,6 +56,7 @@ public:
 
         Node* current = head;
         head = head -> next;
+        delete current;
         size--;
     }
 
