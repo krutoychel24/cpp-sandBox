@@ -41,7 +41,7 @@ int main()
 
     fire(ammo, 1);
     fire(ammo, 1);
-    fire(ammo, 1);
+    fire(ammo, 6);
 
     ammo.print();
 

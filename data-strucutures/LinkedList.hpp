@@ -49,14 +49,14 @@ public:
 
     void removeFirst()
     {
-        if (head == nullptr) 
+        if (head == nullptr)
         {
-        return;
+            return;
         }
 
         Node* current = head;
-        int removeFirst = current -> value;
-        remove(removeFirst);
+        head = head -> next;
+        size--;
     }
 
     void remove(int idx)
@@ -157,9 +157,11 @@ public:
         return current->value;
     }
 
-    int getSize() {
+    int getSize()
+    {
         return size;
     }
+
 private:
     Node *head = nullptr;
     int size;
