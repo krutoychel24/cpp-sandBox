@@ -7,7 +7,7 @@
 const int REGULAR = 1;
 const int TRACE = 2;
 
-void fire(Stack& ammo, int shots) {
+void fire(Queue& ammo, int shots) {
     int shotsCounter = 0;
 
     if (shots <= 0)
@@ -17,7 +17,7 @@ void fire(Stack& ammo, int shots) {
 
     while (shotsCounter != shots && ammo.isEmpty() != true)
     {
-        std::cout << "FIRE WITH BULLET TYPE: " << ammo.pop() << std::endl;
+        std::cout << "FIRE WITH BULLET TYPE: " << ammo.dequeue() << std::endl;
         shotsCounter++;
     }
 
@@ -29,13 +29,13 @@ void fire(Stack& ammo, int shots) {
 
 int main()
 {
-    Stack ammo;
+    Queue ammo;
     
-    ammo.push(REGULAR);
-    ammo.push(REGULAR);
-    ammo.push(REGULAR);
-    ammo.push(TRACE);
-    ammo.push(REGULAR);
+    ammo.enqueue(REGULAR);
+    ammo.enqueue(REGULAR);
+    ammo.enqueue(REGULAR);
+    ammo.enqueue(TRACE);
+    ammo.enqueue(REGULAR);
 
     ammo.print();
 

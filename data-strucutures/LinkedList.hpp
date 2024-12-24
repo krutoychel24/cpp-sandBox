@@ -47,6 +47,18 @@ public:
         remove(lastElementIndex);
     }
 
+    void removeFirst()
+    {
+        if (head == nullptr) 
+        {
+        return;
+        }
+
+        Node* current = head;
+        int removeFirst = current -> value;
+        remove(removeFirst);
+    }
+
     void remove(int idx)
     {
         if (idx > this->size - 1 || idx < 0)
