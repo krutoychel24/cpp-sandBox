@@ -16,7 +16,7 @@ class LinkedList
 public:
     LinkedList() : size(0) {};
 
-    void insert(int value)
+    void insert(int value) // O(n) -> O(1)
     {
         Node *newNode = new Node{value};
 
@@ -28,7 +28,7 @@ public:
         }
 
         Node *current = this->head;
-        while (current)
+        while (current != nullptr)
         {
             if (current->next == nullptr)
             {
@@ -41,13 +41,13 @@ public:
         }
     }
 
-    void removeLast()
+    void removeLast() // O(n) -> O(1)
     {
-        int lastElementIndex = size - 1;
-        remove(lastElementIndex);
+        int lastElementIndex = size - 1; // O(1)
+        remove(lastElementIndex); // O(n)
     }
 
-    void removeFirst()
+    void removeFirst() // O(1)
     {
         if (head == nullptr)
         {
@@ -60,7 +60,7 @@ public:
         size--;
     }
 
-    void remove(int idx)
+    void remove(int idx) // O(n)
     {
         if (idx > this->size - 1 || idx < 0)
             return;
@@ -142,7 +142,7 @@ public:
         }
     }
 
-    int tailElement()
+    int tailElement() // O(n) -> O(1)
     {
         Node *current = head;
 
