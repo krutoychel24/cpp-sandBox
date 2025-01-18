@@ -9,43 +9,55 @@ struct Node
 {
     int value;
     Node *next;
+    Node* prev;
 };
 
 class LinkedList
 {
 public:
-    LinkedList() : size(0) {};
+    LinkedList() :size(0) {};
 
-    void insert(int value) // O(n) -> O(1)
+void insert(int value) // O(1)
+{
+    Node *newNode = new Node{value, nullptr, tail};
+
+    if (tail == nullptr)    
     {
-        Node *newNode = new Node{value};
-
-        if (head == nullptr)
-        {
-            this->head = newNode;
-            this->size++;
-            return;
-        }
-
-        Node *current = this->head;
-        while (current != nullptr)
-        {
-            if (current->next == nullptr)
-            {
-                current->next = newNode;
-                this->size++;
-                return;
-            }
-
-            current = current->next;
-        }
+        head = newNode;
+        tail = newNode;
+    }
+    else
+    {
+        tail->next = newNode; 
+        tail = newNode;       
     }
 
-    void removeLast() // O(n) -> O(1)
+    size++;
+}
+
+
+void removeLast() //O(1)
+{
+    if (tail == nullptr)
     {
-        int lastElementIndex = size - 1; // O(1)
-        remove(lastElementIndex); // O(n)
+        return;
+    } 
+
+    if (head == tail) 
+    { 
+        delete tail;
+        head = nullptr;
+        tail = nullptr;
+    } 
+    else 
+    {
+        tail = tail->prev; 
+        delete tail->next; 
+        tail->next = nullptr; 
     }
+
+    size--;
+}
 
     void removeFirst() // O(1)
     {
@@ -105,7 +117,7 @@ public:
                 std::cout << " > ";
             }
         }
-    }
+    }   
 
     int get(int n)
     {
@@ -142,20 +154,16 @@ public:
         }
     }
 
-    int tailElement() // O(n) -> O(1)
+    int tailElement() // O(1)
     {
-        Node *current = head;
-
-        if (current == nullptr)
+        if (tail != nullptr)
         {
-            return NULL;
+            return tail->value;
         }
-
-        while (current->next != nullptr)
+        else
         {
-            current = current->next;
+            return 0;
         }
-        return current->value;
     }
 
     int getSize()
@@ -165,6 +173,7 @@ public:
 
 private:
     Node *head = nullptr;
+    Node *tail;
     int size;
 };
 #endif
